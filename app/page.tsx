@@ -1,10 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
+
 import { PatientForm } from "@/components/forms/PatientForm";
-export default function Home() {
+import { PasskeyModal } from "@/components/PasskeyModal";
+
+const Home = ({ searchParams }: SearchParamProps) => {
+  const isAdmin = searchParams?.admin === "true";
+
   return (
-    <main className="min-h-screen  p-10">
-      <h1 className="flex justify-center items-center lg:text-4xl sm:text-xl font-bold">MEDOC <span>+</span></h1>
+    <div className="flex h-screen max-h-screen">
+      {isAdmin && <PasskeyModal />}
+
       <section className="remove-scrollbar container my-auto">
         <div className="sub-container max-w-[496px]">
           <Image
@@ -14,12 +20,12 @@ export default function Home() {
             alt="patient"
             className="mb-12 h-10 w-fit"
           />
- <PatientForm />
-         
+
+          <PatientForm />
 
           <div className="text-14-regular mt-20 flex justify-between">
             <p className="justify-items-end text-dark-600 xl:text-left">
-              © 2024 Medoc
+              © 2024 CarePluse
             </p>
             <Link href="/?admin=true" className="text-green-500">
               Admin
@@ -27,10 +33,16 @@ export default function Home() {
           </div>
         </div>
       </section>
-    
 
-   
-          
-    </main>
+      <Image
+        src="/assets/images/onboarding-img.png"
+        height={1000}
+        width={1000}
+        alt="patient"
+        className="side-img max-w-[50%]"
+      />
+    </div>
   );
-}
+};
+
+export default Home;
