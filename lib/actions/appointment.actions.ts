@@ -9,7 +9,7 @@ import {
   APPOINTMENT_COLLECTION_ID,
   DATABASE_ID,
   databases,
-  //messaging,
+  messaging,
 } from "../appwrite.config";
 import { formatDateTime, parseStringify } from "../utils";
 
@@ -101,7 +101,6 @@ export const getRecentAppointmentList = async () => {
 };
 
 //  SEND SMS NOTIFICATION
-{/* 
 export const sendSMSNotification = async (userId: string, content: string) => {
   try {
     // https://appwrite.io/docs/references/1.5.x/server-nodejs/messaging#createSms
@@ -116,10 +115,8 @@ export const sendSMSNotification = async (userId: string, content: string) => {
     console.error("An error occurred while sending sms:", error);
   }
 };
-*/}
 
 //  UPDATE APPOINTMENT
-{/* 
 export const updateAppointment = async ({
   appointmentId,
   userId,
@@ -137,7 +134,7 @@ export const updateAppointment = async ({
 
     if (!updatedAppointment) throw Error;
 
-    const smsMessage = `Greetings from CarePulse. ${type === "schedule" ? `Your appointment is confirmed for ${formatDateTime(appointment.schedule!).dateTime} with Dr. ${appointment.primaryPhysician}` : `We regret to inform that your appointment for ${formatDateTime(appointment.schedule!).dateTime} is cancelled. Reason:  ${appointment.cancellationReason}`}.`;
+    const smsMessage = `Greetings from Medoc. ${type === "schedule" ? `Your appointment is confirmed for ${formatDateTime(appointment.schedule!).dateTime} with Dr. ${appointment.primaryPhysician}` : `We regret to inform that your appointment for ${formatDateTime(appointment.schedule!).dateTime} is cancelled. Reason:  ${appointment.cancellationReason}`}.`;
     await sendSMSNotification(userId, smsMessage);
 
     revalidatePath("/admin");
@@ -146,7 +143,6 @@ export const updateAppointment = async ({
     console.error("An error occurred while scheduling an appointment:", error);
   }
 };
-*/}
 
 // GET APPOINTMENT
 export const getAppointment = async (appointmentId: string) => {
